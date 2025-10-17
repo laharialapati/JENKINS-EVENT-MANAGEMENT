@@ -7,7 +7,7 @@
     <groupId>com.klef.dev</groupId>
     <artifactId>event-management</artifactId>
     <version>1.0.0</version>
-    <packaging>War</packaging>
+    <packaging>war</packaging>
 
     <name>Event Management Application</name>
 
