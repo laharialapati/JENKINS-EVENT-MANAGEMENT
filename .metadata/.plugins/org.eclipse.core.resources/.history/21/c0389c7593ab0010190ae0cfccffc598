@@ -1,0 +1,42 @@
+package com.example.eventbackend.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import com.example.eventbackend.entity.Event;
+import com.example.eventbackend.service.EventService;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/eventapi")
+@CrossOrigin(origins = "http://localhost:5173") // frontend Vite port
+public class EventController {
+
+    @Autowired
+    private EventService service;
+
+    @GetMapping("/all")
+    public List<Event> getAllEvents() {
+        return service.getAllEvents();
+    }
+
+    @GetMapping("/get/{id}")
+    public Event getEventById(@PathVariable int id) {
+        return service.getEventById(id);
+    }
+
+    @PostMapping("/add")
+    public Event addEvent(@RequestBody Event event) {
+        return service.addEvent(event);
+    }
+
+    @PutMapping("/update")
+    public Event updateEvent(@RequestBody Event event) {
+        return service.updateEvent(event);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteEvent(@PathVariable int id) {
+        service.deleteEvent(id);
+    }
+}

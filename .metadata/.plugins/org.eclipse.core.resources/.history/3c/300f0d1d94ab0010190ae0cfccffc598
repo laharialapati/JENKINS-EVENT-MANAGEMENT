@@ -1,0 +1,37 @@
+package com.example.eventbackend.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.example.eventbackend.entity.Event;
+import com.example.eventbackend.repository.EventRepository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class EventService {
+
+    @Autowired
+    private EventRepository repository;
+
+    public List<Event> getAllEvents() {
+        return repository.findAll();
+    }
+
+    public Event getEventById(int id) {
+        Optional<Event> event = repository.findById(id);
+        return event.orElse(null);
+    }
+
+    public Event addEvent(Event event) {
+        return repository.save(event);
+    }
+
+    public Event updateEvent(Event event) {
+        return repository.save(event);
+    }
+
+    public void deleteEvent(int id) {
+        repository.deleteById(id);
+    }
+}
